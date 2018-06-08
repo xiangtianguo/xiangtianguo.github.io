@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://blog.cxuyuan.com">
   <title>以太坊常用操作命令 | 小人物的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="启动私链 geth --identity &quot;qtlnodetest&quot; --targetgaslimit 4294967295 --gasprice 1000000000 --rpc --rpcport &quot;8545&quot; --rpcaddr 0.0.0.0 --rpccorsdomain &quot;*&quot; --datadir data0 --port &quot;30303&quot; console 2&amp;gt;&amp;gt;log   解锁账号">
+  <meta name="description" content="以太坊的 javascript 内置对象  eth：操作区块链 net：查看p2p网络状态 admin：管理节点 miner：启动/停止等挖矿操作 personal：管理账户 txpool：查看交易内存池 web3：包含以上对象，也包含一些单位算法    启动私链 geth --identity &quot;qtlnodetest&quot; --targetgaslimit 4294967295 --gaspric">
 <meta name="keywords" content="以太坊">
 <meta property="og:type" content="article">
 <meta property="og:title" content="以太坊常用操作命令">
 <meta property="og:url" content="http://blog.cxuyuan.com/2018/06/08/以太坊常用操作命令/index.html">
 <meta property="og:site_name" content="小人物的博客">
-<meta property="og:description" content="启动私链 geth --identity &quot;qtlnodetest&quot; --targetgaslimit 4294967295 --gasprice 1000000000 --rpc --rpcport &quot;8545&quot; --rpcaddr 0.0.0.0 --rpccorsdomain &quot;*&quot; --datadir data0 --port &quot;30303&quot; console 2&amp;gt;&amp;gt;log   解锁账号">
+<meta property="og:description" content="以太坊的 javascript 内置对象  eth：操作区块链 net：查看p2p网络状态 admin：管理节点 miner：启动/停止等挖矿操作 personal：管理账户 txpool：查看交易内存池 web3：包含以上对象，也包含一些单位算法    启动私链 geth --identity &quot;qtlnodetest&quot; --targetgaslimit 4294967295 --gaspric">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-08T04:01:32.482Z">
+<meta property="og:updated_time" content="2018-06-08T05:29:16.126Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="以太坊常用操作命令">
-<meta name="twitter:description" content="启动私链 geth --identity &quot;qtlnodetest&quot; --targetgaslimit 4294967295 --gasprice 1000000000 --rpc --rpcport &quot;8545&quot; --rpcaddr 0.0.0.0 --rpccorsdomain &quot;*&quot; --datadir data0 --port &quot;30303&quot; console 2&amp;gt;&amp;gt;log   解锁账号">
+<meta name="twitter:description" content="以太坊的 javascript 内置对象  eth：操作区块链 net：查看p2p网络状态 admin：管理节点 miner：启动/停止等挖矿操作 personal：管理账户 txpool：查看交易内存池 web3：包含以上对象，也包含一些单位算法    启动私链 geth --identity &quot;qtlnodetest&quot; --targetgaslimit 4294967295 --gaspric">
   
     <link rel="alternative" href="/atom.xml" title="小人物的博客" type="application/atom+xml">
   
@@ -163,12 +163,29 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="启动私链"><a href="#启动私链" class="headerlink" title="启动私链"></a>启动私链</h4><pre>
+        <h4 id="以太坊的-javascript-内置对象"><a href="#以太坊的-javascript-内置对象" class="headerlink" title="以太坊的 javascript 内置对象"></a>以太坊的 javascript 内置对象</h4><pre>
+
+eth：操作区块链
+net：查看p2p网络状态
+admin：管理节点
+miner：启动/停止等挖矿操作
+personal：管理账户
+txpool：查看交易内存池
+web3：包含以上对象，也包含一些单位算法
+</pre>
+
+
+<h4 id="启动私链"><a href="#启动私链" class="headerlink" title="启动私链"></a>启动私链</h4><pre>
 geth --identity "qtlnodetest" --targetgaslimit 4294967295 --gasprice 1000000000 --rpc --rpcport "8545" --rpcaddr 0.0.0.0 --rpccorsdomain "*" --datadir data0 --port "30303" console 2>>log
+</pre>
+#### 创建新账号
+<pre>
+personal.newAccount()
 </pre>
 
 <h4 id="解锁账号"><a href="#解锁账号" class="headerlink" title="解锁账号"></a>解锁账号</h4><pre>
  personal.unlockAccount(eth.accounts[0])
+ ersonal.unlockAccount(eth.accounts[0],"123456",1000000000)
 </pre>
 
 <h4 id="查看账户列表"><a href="#查看账户列表" class="headerlink" title="查看账户列表"></a>查看账户列表</h4><pre>
@@ -185,10 +202,23 @@ eth.blockNumber
 
 
 <h4 id="开始-停止挖矿"><a href="#开始-停止挖矿" class="headerlink" title="开始/停止挖矿"></a>开始/停止挖矿</h4><pre>
-miner.start()/miner.stop()
+miner.start()
+参数是开启挖矿计算的线程数。第一次会创建 DAG ，这里会花费一些时间，关于 DAG， 详情见底部参考。 出现 true 说明挖矿完毕。挖一个区块， 获得 5 个以太币作为奖励。 账户里的显示的单位是 wei， 并不是以太币。
+
+miner.stop()
 </pre>
 
+<h4 id="查看交易池状态"><a href="#查看交易池状态" class="headerlink" title="查看交易池状态"></a>查看交易池状态</h4><pre>
+txpool.status
+</pre>
 
+<h4 id="单位转换"><a href="#单位转换" class="headerlink" title="单位转换"></a>单位转换</h4><pre>
+web3.fromWei(eth.getBalance(eth.accounts[0]), 'ether')
+</pre>
+
+<h4 id="添加p2p节点"><a href="#添加p2p节点" class="headerlink" title="添加p2p节点"></a>添加p2p节点</h4><pre>
+admin.addPeer("enode://f2c91ee24585e592fa5adc1940360b90e1a10969c 5955fc51807bb24ab5e34265994c36f3af51a982a3d6d66f73b8cbba99ad38739545812724d60bf5c58e684@39.104.104.233:30303”)
+</pre>
       
 
       
@@ -369,11 +399,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">golang</a>
+                <a href="javascript:void(0)" class="js-tag color4">以太坊</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">以太坊</a>
+                <a href="javascript:void(0)" class="js-tag color2">golang</a>
               </li>
             
             <div class="clearfix"></div>
@@ -429,11 +459,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             </li>
           
             <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接2</a>
+              <a href="https://cryptozombies.io/zh/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>CryptoZombies</a>
             </li>
           
             <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接3</a>
+              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>Remxi</a>
             </li>
           
         </ul>
