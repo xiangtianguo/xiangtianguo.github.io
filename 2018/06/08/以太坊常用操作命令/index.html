@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://blog.cxuyuan.com">
   <title>以太坊常用操作命令 | 小人物的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="以太坊的 javascript 内置对象  eth：操作区块链 net：查看p2p网络状态 admin：管理节点 miner：启动/停止等挖矿操作 personal：管理账户 txpool：查看交易内存池 web3：包含以上对象，也包含一些单位算法    启动私链 geth --identity &quot;qtlnodetest&quot; --targetgaslimit 4294967295 --gaspric">
+  <meta name="description" content="以太坊的 javascript 内置对象  eth：操作区块链 net：查看p2p网络状态 admin：管理节点 miner：启动/停止等挖矿操作 personal：管理账户 txpool：查看交易内存池 web3：包含以上对象，也包含一些单位算法">
 <meta name="keywords" content="以太坊">
 <meta property="og:type" content="article">
 <meta property="og:title" content="以太坊常用操作命令">
 <meta property="og:url" content="http://blog.cxuyuan.com/2018/06/08/以太坊常用操作命令/index.html">
 <meta property="og:site_name" content="小人物的博客">
-<meta property="og:description" content="以太坊的 javascript 内置对象  eth：操作区块链 net：查看p2p网络状态 admin：管理节点 miner：启动/停止等挖矿操作 personal：管理账户 txpool：查看交易内存池 web3：包含以上对象，也包含一些单位算法    启动私链 geth --identity &quot;qtlnodetest&quot; --targetgaslimit 4294967295 --gaspric">
+<meta property="og:description" content="以太坊的 javascript 内置对象  eth：操作区块链 net：查看p2p网络状态 admin：管理节点 miner：启动/停止等挖矿操作 personal：管理账户 txpool：查看交易内存池 web3：包含以上对象，也包含一些单位算法">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-08T05:34:11.052Z">
+<meta property="og:updated_time" content="2018-06-08T05:56:41.051Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="以太坊常用操作命令">
-<meta name="twitter:description" content="以太坊的 javascript 内置对象  eth：操作区块链 net：查看p2p网络状态 admin：管理节点 miner：启动/停止等挖矿操作 personal：管理账户 txpool：查看交易内存池 web3：包含以上对象，也包含一些单位算法    启动私链 geth --identity &quot;qtlnodetest&quot; --targetgaslimit 4294967295 --gaspric">
+<meta name="twitter:description" content="以太坊的 javascript 内置对象  eth：操作区块链 net：查看p2p网络状态 admin：管理节点 miner：启动/停止等挖矿操作 personal：管理账户 txpool：查看交易内存池 web3：包含以上对象，也包含一些单位算法">
   
     <link rel="alternative" href="/atom.xml" title="小人物的博客" type="application/atom+xml">
   
@@ -175,6 +175,7 @@ web3：包含以上对象，也包含一些单位算法
 </pre>
 
 
+<a id="more"></a>
 <h4 id="启动私链"><a href="#启动私链" class="headerlink" title="启动私链"></a>启动私链</h4><pre>
 geth --identity "qtlnodetest" --targetgaslimit 4294967295 --gasprice 1000000000 --rpc --rpcport "8545" --rpcaddr 0.0.0.0 --rpccorsdomain "*" --datadir data0 --port "30303" console 2>>log
 </pre>
@@ -205,6 +206,7 @@ eth.blockNumber
 miner.start()   //开始挖矿
 参数是开启挖矿计算的线程数。第一次会创建 DAG ，这里会花费一些时间，关于 DAG， 详情见底部参考。 出现 true 说明挖矿完毕。挖一个区块， 获得 5 个以太币作为奖励。 账户里的显示的单位是 wei， 并不是以太币。
 
+admin.sleepBlocks(1)    //挖到第几个区块就停止
 miner.stop()    //停止挖矿
 eth.mining      //查看是否正在挖矿
 </pre>
@@ -221,6 +223,7 @@ web3.fromWei(eth.getBalance(eth.accounts[0]), 'ether')
 <h4 id="添加p2p节点"><a href="#添加p2p节点" class="headerlink" title="添加p2p节点"></a>添加p2p节点</h4><pre>
 admin.addPeer("enode://f2c91ee24585e592fa5adc1940360b90e1a10969c 5955fc51807bb24ab5e34265994c36f3af51a982a3d6d66f73b8cbba99ad38739545812724d60bf5c58e684@39.104.104.233:30303”)
 </pre>
+
       
 
       
