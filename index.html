@@ -167,6 +167,29 @@
         <h4 id="启动私链"><a href="#启动私链" class="headerlink" title="启动私链"></a>启动私链</h4><pre>
 geth --identity "qtlnodetest" --targetgaslimit 4294967295 --gasprice 1000000000 --rpc --rpcport "8545" --rpcaddr 0.0.0.0 --rpccorsdomain "*" --datadir data0 --port "30303" console 2>>log
 </pre>
+
+<h4 id="解锁账号"><a href="#解锁账号" class="headerlink" title="解锁账号"></a>解锁账号</h4><pre>
+ personal.unlockAccount(eth.accounts[0])
+</pre>
+
+<h4 id="查看账户列表"><a href="#查看账户列表" class="headerlink" title="查看账户列表"></a>查看账户列表</h4><pre>
+ eth.accounts
+</pre>
+
+<h4 id="查询账户余额"><a href="#查询账户余额" class="headerlink" title="查询账户余额"></a>查询账户余额</h4><pre>
+eth.getBalance(eth.accounts[0])
+</pre>
+
+<h4 id="区块总数"><a href="#区块总数" class="headerlink" title="区块总数"></a>区块总数</h4><pre>
+eth.blockNumber
+</pre>
+
+
+<h4 id="开始-停止挖矿"><a href="#开始-停止挖矿" class="headerlink" title="开始/停止挖矿"></a>开始/停止挖矿</h4><pre>
+miner.start()/miner.stop()
+</pre>
+
+
       
 
       

@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://blog.cxuyuan.com">
   <title>truffle | 小人物的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="启动私链 geth --identity &quot;qtlnodetest&quot; --targetgaslimit 4294967295 --gasprice 1000000000 --rpc --rpcport &quot;8545&quot; --rpcaddr 0.0.0.0 --rpccorsdomain &quot;*&quot; --datadir data0 --port &quot;30303&quot; console 2&amp;gt;&amp;gt;log">
+  <meta name="description" content="启动私链 geth --identity &quot;qtlnodetest&quot; --targetgaslimit 4294967295 --gasprice 1000000000 --rpc --rpcport &quot;8545&quot; --rpcaddr 0.0.0.0 --rpccorsdomain &quot;*&quot; --datadir data0 --port &quot;30303&quot; console 2&amp;gt;&amp;gt;log   解锁账号">
 <meta name="keywords" content="以太坊">
 <meta property="og:type" content="article">
 <meta property="og:title" content="truffle">
 <meta property="og:url" content="http://blog.cxuyuan.com/2018/06/08/truffle/index.html">
 <meta property="og:site_name" content="小人物的博客">
-<meta property="og:description" content="启动私链 geth --identity &quot;qtlnodetest&quot; --targetgaslimit 4294967295 --gasprice 1000000000 --rpc --rpcport &quot;8545&quot; --rpcaddr 0.0.0.0 --rpccorsdomain &quot;*&quot; --datadir data0 --port &quot;30303&quot; console 2&amp;gt;&amp;gt;log">
+<meta property="og:description" content="启动私链 geth --identity &quot;qtlnodetest&quot; --targetgaslimit 4294967295 --gasprice 1000000000 --rpc --rpcport &quot;8545&quot; --rpcaddr 0.0.0.0 --rpccorsdomain &quot;*&quot; --datadir data0 --port &quot;30303&quot; console 2&amp;gt;&amp;gt;log   解锁账号">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-08T02:09:46.552Z">
+<meta property="og:updated_time" content="2018-06-08T03:00:44.273Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="truffle">
-<meta name="twitter:description" content="启动私链 geth --identity &quot;qtlnodetest&quot; --targetgaslimit 4294967295 --gasprice 1000000000 --rpc --rpcport &quot;8545&quot; --rpcaddr 0.0.0.0 --rpccorsdomain &quot;*&quot; --datadir data0 --port &quot;30303&quot; console 2&amp;gt;&amp;gt;log">
+<meta name="twitter:description" content="启动私链 geth --identity &quot;qtlnodetest&quot; --targetgaslimit 4294967295 --gasprice 1000000000 --rpc --rpcport &quot;8545&quot; --rpcaddr 0.0.0.0 --rpccorsdomain &quot;*&quot; --datadir data0 --port &quot;30303&quot; console 2&amp;gt;&amp;gt;log   解锁账号">
   
     <link rel="alternative" href="/atom.xml" title="小人物的博客" type="application/atom+xml">
   
@@ -166,6 +166,29 @@
         <h4 id="启动私链"><a href="#启动私链" class="headerlink" title="启动私链"></a>启动私链</h4><pre>
 geth --identity "qtlnodetest" --targetgaslimit 4294967295 --gasprice 1000000000 --rpc --rpcport "8545" --rpcaddr 0.0.0.0 --rpccorsdomain "*" --datadir data0 --port "30303" console 2>>log
 </pre>
+
+<h4 id="解锁账号"><a href="#解锁账号" class="headerlink" title="解锁账号"></a>解锁账号</h4><pre>
+ personal.unlockAccount(eth.accounts[0])
+</pre>
+
+<h4 id="查看账户列表"><a href="#查看账户列表" class="headerlink" title="查看账户列表"></a>查看账户列表</h4><pre>
+ eth.accounts
+</pre>
+
+<h4 id="查询账户余额"><a href="#查询账户余额" class="headerlink" title="查询账户余额"></a>查询账户余额</h4><pre>
+eth.getBalance(eth.accounts[0])
+</pre>
+
+<h4 id="区块总数"><a href="#区块总数" class="headerlink" title="区块总数"></a>区块总数</h4><pre>
+eth.blockNumber
+</pre>
+
+
+<h4 id="开始-停止挖矿"><a href="#开始-停止挖矿" class="headerlink" title="开始/停止挖矿"></a>开始/停止挖矿</h4><pre>
+miner.start()/miner.stop()
+</pre>
+
+
       
 
       
